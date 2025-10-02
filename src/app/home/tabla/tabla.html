@@ -1,0 +1,55 @@
+<p-toolbar class="mb-6 flex justify-between items-center bg-gray-100 p-4 rounded shadow">
+    <ng-template #start>
+    </ng-template>
+    <ng-template #end class="flex gap-2">
+        <p-button label="Exportar Excel" icon="pi pi-upload" severity="secondary" (onClick)="exportToExcel()" />
+        <p-button label="Exportar PDF" icon="pi pi-upload" severity="secondary" (onClick)="exportToPDF()" />
+    </ng-template>
+</p-toolbar>
+
+<p-table #dt [value]="articulos" [rows]="5" [columns]="cols" [paginator]="true" [rowHover]="true" dataKey="id"
+    currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} artículos"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[5, 10, 25, 50]" [loading]="cargando"
+    [globalFilterFields]="['nombre', 'clave']">
+    <ng-template #caption>
+        <div class="flex justify-between items-center">
+            <h5 class="m-0">Gestión de Artículos</h5>
+            <div class="relative">
+                <p-iconfield>
+                    <p-inputicon class="pi pi-search" />
+                    <input pInputText type="text" pSize="small" [(ngModel)]="articulo"
+                        (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Buscar..." />
+                </p-iconfield>
+            </div>
+        </div>
+    </ng-template>
+    <ng-template #header>
+        <tr>
+            <th pSortableColumn="clave">
+                <div class="flex items-center gap-2">
+                    Código Artículo
+                    <p-sortIcon field="clave" />
+                </div>
+            </th>
+            <th pSortableColumn="nombre">
+                <div class="flex items-center gap-2">
+                    Nombre
+                    <p-sortIcon field="nombre" />
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+
+    <ng-template #body let-articulo>
+        <tr>
+            <td>{{articulo.clave}}</td>
+            <td>{{articulo.nombre}}</td>
+        </tr>
+    </ng-template>
+
+    <ng-template #emptymessage>
+        <tr>
+            <td colspan="2"> No se encontraron artículos </td>
+        </tr>
+    </ng-template>
+</p-table>

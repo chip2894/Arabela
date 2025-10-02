@@ -1,0 +1,6 @@
+:host ::ng-deep .p-menu .active-link {
+    background-color: var(--primary-color);
+    color: #fff !important;
+    font-weight: bold;
+    border-radius: 6px;
+}
