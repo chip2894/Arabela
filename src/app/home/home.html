@@ -1,5 +1,90 @@
-<div class="menu-container">
-  <p-menubar [model]="items" />
-</div>
+<div class="flex flex-col h-screen">
 
-<router-outlet></router-outlet>
+    <!-- HEADER -->
+    <header
+        class="bg-blue-400 border-b px-4 py-2 flex flex-wrap items-center justify-between text-neutral-100 flex-shrink-0">
+        <!-- IZQUIERDA: Menú y logo -->
+        <div class="flex items-center gap-3 flex-shrink-0">
+            <button (click)="toggleSidebar()" class="flex md:hidden">
+                <i class="pi pi-bars text-xl"></i>
+            </button>
+
+            <div class="flex items-center gap-2 cursor-pointer" (click)="goHome()">
+                <p-image src="https://www.arabela.com/_next/image?url=%2Fimg%2Flogo%2Flogo_blanco.svg&w=640&q=75"
+                    alt="Logo-Arabela" width="150" />
+                <span class="font-semibold text-base sm:text-lg md:text-xl block">SOCA</span>
+            </div>
+        </div>
+
+        <!-- DERECHA: Usuario + cerrar sesión -->
+        <div
+            class="flex items-center gap-2 text-xs sm:text-sm mt-2 md:mt-0 flex-wrap justify-end text-center md:text-right w-full md:w-auto">
+            <span class="whitespace-nowrap">Nombre: José Luis Castro Serrato</span>
+            <span class="hidden sm:inline">|</span>
+            <p-button label="Cerrar Sesión" icon="pi pi-sign-out" size="small" styleClass="w-full sm:w-auto"
+                class="mt-1 sm:mt-0"></p-button>
+        </div>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="flex flex-1 relative">
+
+        <!-- SIDEBAR MÓVIL Y OVERLAY -->
+        <aside
+            class="fixed inset-y-0 left-0 bg-gray-100 border-r flex flex-col justify-between flex-shrink-0 z-50 transform transition-transform duration-300 md:static md:translate-x-0"
+            [ngClass]="{
+        '-translate-x-full': isMobile && !sidebarOpen,
+        'translate-x-0': isMobile && sidebarOpen,
+        'w-60': !isMobile,
+        'w-0': !isMobile && !sidebarOpen
+      }">
+
+            <!-- Header móvil -->
+            <div class="md:hidden bg-gray-200 border-b px-4 py-2 flex justify-between items-center">
+                <span class="font-semibold">Menú</span>
+                <button (click)="toggleSidebar()">
+                    <i class="pi pi-times"></i>
+                </button>
+            </div>
+
+            <!-- Menú lateral -->
+            <div class="flex-grow overflow-y-auto p-3 transition-opacity duration-300"
+                [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }">
+                <p-panelMenu [model]="items"></p-panelMenu>
+            </div>
+
+            <!-- Footer del sidebar -->
+            <div class="border-t flex-shrink-0 p-2 flex justify-end transition-opacity duration-300"
+                [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }">
+                <p-button icon="pi pi-refresh" size="small" [text]="true" [raised]="true" severity="secondary"
+                    pTooltip="Refrescar menú" tooltipPosition="right" (click)="refreshMenu()">
+                </p-button>
+            </div>
+        </aside>
+
+        <!-- OVERLAY -->
+        <div class="fixed inset-0 z-40 bg-black bg-opacity-30 backdrop-blur-sm transition-all duration-300"
+            [ngClass]="{ 'opacity-50 visible pointer-events-auto': sidebarOpen && isMobile, 'opacity-0 invisible pointer-events-none hidden': !sidebarOpen || !isMobile }"
+            (click)="toggleSidebar()"></div>
+
+        <!-- ÁREA DE TRABAJO -->
+        <main class="flex-1 bg-white p-4 overflow-auto transition-all duration-300">
+            <router-outlet></router-outlet>
+            <p-confirmDialog position="top" />
+            <p-toast position="bottom-right" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer
+        class="bg-gray-200 border-t px-4 py-2 flex flex-wrap justify-center items-center justify-end gap-2 text-xs text-gray-600 flex-shrink-0 text-center">
+        <span>Versión: {{version}}</span>
+        <span>|</span>
+        <span>Usuario: {{usuario}}</span>
+        <span>|</span>
+        <span>Perfil: {{perfil}}</span>
+        <span class="hidden sm:inline">|</span>
+        <span class="hidden sm:inline">Fecha: {{fechaActual$ | async}}</span>
+    </footer>
+
+</div>

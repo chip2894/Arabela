@@ -4,6 +4,7 @@ import { jsPDF } from 'jspdf';
 import { saveAs } from 'file-saver';
 import * as XLSX from 'xlsx';
 import autoTable from 'jspdf-autotable';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 interface Column {
   field: string;
@@ -35,6 +36,11 @@ export class Tabla implements OnInit {
   activityValues: number[] = [0, 100];
 
   @ViewChild('dt') dt!: Table;
+
+  constructor(
+    private messageService: MessageService,
+    private confirmationService: ConfirmationService
+  ) { }
 
   ngOnInit(): void {
     this.articulos = [
@@ -80,7 +86,6 @@ export class Tabla implements OnInit {
     saveAs(data, 'productos.xlsx');
   }
 
-
   async exportToPDF() {
     const doc = new jsPDF();
 
@@ -105,6 +110,37 @@ export class Tabla implements OnInit {
 
     doc.save('productos.pdf');
   }
+
+  editarArticulo(articulo: Articulo) {
+    console.log(articulo);
+  }
+
+  eliminarArticulo(articulo: Articulo) {
+    this.confirmationService.confirm({
+      message: "Esta acción no se puede deshacer, ¿desea continuar?",
+      header: `¿Está seguro de que desea eliminar "${articulo.nombre}"?`,
+      icon: 'pi pi-exclamation-triangle',
+      rejectButtonProps: {
+        label: 'No',
+        severity: 'secondary',
+        variant: 'text'
+      },
+      acceptButtonProps: {
+        severity: 'danger',
+        label: 'Sí'
+      },
+      accept: () => {
+        this.articulos = this.articulos.filter(a => a !== articulo);
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Éxito',
+          detail: `Artículo "${articulo.nombre}" eliminado`,
+          life: 3000
+        });
+      }
+    });
+  }
+
 
 
 }

@@ -104,6 +104,7 @@ import { AutoFocusModule } from 'primeng/autofocus';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ButtonGroupModule } from 'primeng/buttongroup';
 
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { NodeService } from '../../service/nodeservice';
 
 @NgModule({
@@ -215,6 +216,10 @@ import { NodeService } from '../../service/nodeservice';
     AutoFocusModule,
     KeyFilterModule
   ],
-  providers: [NodeService]
+  providers: [
+    ConfirmationService,
+    MessageService,
+    NodeService
+  ]
 })
 export class HomeModule { }
