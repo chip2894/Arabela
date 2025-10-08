@@ -5,7 +5,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HomeRoutingModule } from './home-routing-module';
 import { Home } from './home';
 import { Tabla } from './tabla/tabla';
+import { TablaExpansion } from './tabla-expansion/tabla-expansion';
+import { TablaFilasEstaticas } from './tabla-filas-estaticas/tabla-filas-estaticas';
+import { TablaFiltros } from './tabla-filtros/tabla-filtros';
+import { TablaPaginacion } from './tabla-paginacion/tabla-paginacion';
 import { Tree } from './tree/tree';
+import { PanelAcordeon } from './panel-acordeon/panel-acordeon';
+import { PanelCard } from './panel-card/panel-card';
+import { PanelFieldset } from './panel-fieldset/panel-fieldset';
+import { Panel } from './panel/panel';
 
 // PrimeNG Modules
 import { MenubarModule } from 'primeng/menubar';
@@ -93,6 +101,7 @@ import { ToastModule } from 'primeng/toast';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { TooltipModule } from 'primeng/tooltip';
+import { Tooltip } from 'primeng/tooltip';
 import { TreeModule } from 'primeng/tree';
 import { TreeSelectModule } from 'primeng/treeselect';
 import { TreeTableModule } from 'primeng/treetable';
@@ -103,23 +112,49 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import { AutoFocusModule } from 'primeng/autofocus';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { ButtonGroupModule } from 'primeng/buttongroup';
+import { PopoverModule } from 'primeng/popover';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { NodeService } from '../../service/nodeservice';
+import { CdkDragPlaceholder } from "@angular/cdk/drag-drop";
+import { PanelTab } from './panel-tab/panel-tab';
+import { OverlayDialog } from './overlay-dialog/overlay-dialog';
+import { OverlayPopup } from './overlay-popup/overlay-popup';
+import { OverlayModal } from './overlay-modal/overlay-modal';
+import { OverlayDrawer } from './overlay-drawer/overlay-drawer';
+import { OverlayPopover } from './overlay-popover/overlay-popover';
+import { OverlayTooltip } from './overlay-tooltip/overlay-tooltip';
+import { UploadFile } from './upload-file/upload-file';
+import { Login } from './login/login';
 
 @NgModule({
   declarations: [
     Home,
     Tabla,
-    Tree
+    Tree,
+    TablaPaginacion,
+    TablaFiltros,
+    TablaExpansion,
+    TablaFilasEstaticas,
+    PanelAcordeon,
+    PanelCard,
+    PanelFieldset,
+    Panel,
+    PanelTab,
+    OverlayDialog,
+    OverlayPopup,
+    OverlayModal,
+    OverlayDrawer,
+    OverlayPopover,
+    OverlayTooltip,
+    UploadFile,
+    Login
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     HomeRoutingModule,
-
-    // PrimeNG Modules
     MenubarModule,
     ButtonModule,
     TableModule,
@@ -186,6 +221,7 @@ import { NodeService } from '../../service/nodeservice';
     PanelMenuModule,
     PasswordModule,
     PickListModule,
+    PopoverModule,
     ProgressSpinnerModule,
     RadioButtonModule,
     RatingModule,
@@ -206,6 +242,7 @@ import { NodeService } from '../../service/nodeservice';
     ToggleButtonModule,
     ToggleSwitchModule,
     TooltipModule,
+    Tooltip,
     TreeModule,
     TreeSelectModule,
     TreeTableModule,
@@ -214,7 +251,8 @@ import { NodeService } from '../../service/nodeservice';
     StyleClassModule,
     FloatLabelModule,
     AutoFocusModule,
-    KeyFilterModule
+    KeyFilterModule,
+    CdkDragPlaceholder
   ],
   providers: [
     ConfirmationService,

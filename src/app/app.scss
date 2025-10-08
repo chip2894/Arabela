@@ -1,0 +1,10 @@
+/* ::ng-deep necesario porque PrimeNG genera estilos encapsulados */
+::ng-deep .p-paginator {
+    justify-content: flex-end !important;
+    /* mueve la paginación a la derecha */
+}
+
+/* opcional: ajustar el currentPageReport */
+::ng-deep .p-paginator .p-paginator-current {
+    text-align: right;
+}

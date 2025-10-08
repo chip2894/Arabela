@@ -16,7 +16,51 @@ export class Home implements OnInit {
   perfil = 'Administrador';
   sidebarOpen = true;
   isMobile = false;
-  items: MenuItem[] = [];
+  items: MenuItem[] = [
+    {
+      label: 'Árbol', icon: 'pi pi-fw pi-sitemap', routerLink: ['Arbol']
+    },
+    {
+      label: 'Subir Archivo', icon: 'pi pi-fw pi-upload', routerLink: ['Upload']
+    },
+    {
+      label: 'Overlays', icon: 'pi pi-fw pi-box',
+      items: [
+        { label: 'ConfirmDialog', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayDialog'] },
+        { label: 'ConfirmPopup', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayPopup'] },
+        { label: 'Modal', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayModal'] },
+        { label: 'Drawer', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayDrawer'] },
+        { label: 'Popover', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayPopover'] },
+        { label: 'Tooltip', icon: 'pi pi-fw pi-clone', routerLink: ['OverlayTooltip'] },
+      ]
+    },
+    {
+      label: 'Paneles', icon: 'pi pi-fw pi-objects-column',
+      items: [
+        { label: 'Acordeón', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelAcordeon'] },
+        { label: 'Card', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelCard'] },
+        { label: 'Fieldset', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelFieldset'] },
+        { label: 'Panel', icon: 'pi pi-fw pi-th-large', routerLink: ['Panel'] },
+        { label: 'Tabs', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelTab'] },
+      ]
+    },
+    {
+      label: 'Tablas', icon: 'pi pi-fw pi-table',
+      items: [
+        { label: 'Básica', icon: 'pi pi-fw pi-table', routerLink: ['Tabla'] },
+        { label: 'Expansión', icon: 'pi pi-fw pi-table', routerLink: ['TablaExpansion'] },
+        { label: 'Filas Estáticas', icon: 'pi pi-fw pi-table', routerLink: ['TablaFilasEstaticas'] },
+        { label: 'Filtros', icon: 'pi pi-fw pi-table', routerLink: ['TablaFiltros'] },
+        { label: 'Paginación', icon: 'pi pi-fw pi-table', routerLink: ['TablaPaginacion'] },
+      ]
+    },
+    {
+      label: 'Páginas', icon: 'pi pi-fw pi-page',
+      items: [
+        { label: 'Login', icon: 'pi pi-fw pi-user', routerLink: ['Login'] }
+      ]
+    }
+  ];
 
   private dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 
@@ -39,18 +83,6 @@ export class Home implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.items = [
-      { label: 'Tabla', icon: 'pi pi-fw pi-home', routerLink: ['Tabla'] },
-      { label: 'Árbol', icon: 'pi pi-fw pi-sitemap', routerLink: ['Arbol'] },
-      {
-        label: 'Reportes', icon: 'pi pi-fw pi-file',
-        items: [
-          { label: 'Reporte 1', icon: 'pi pi-fw pi-chart-line', routerLink: ['Reporte1'] },
-          { label: 'Reporte 2', icon: 'pi pi-fw pi-chart-bar', routerLink: ['Reporte2'] }
-        ]
-      }
-    ];
-
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.items.forEach(item => {
@@ -67,10 +99,7 @@ export class Home implements OnInit {
   }
 
   refreshMenu() {
-    this.items = [
-      { label: 'Tabla', icon: 'pi pi-fw pi-home', routerLink: ['Tabla'] },
-      { label: 'Árbol', icon: 'pi pi-fw pi-sitemap', routerLink: ['Arbol'] }
-    ];
+    this.items = [...this.items];
   }
 
   goHome() {
@@ -81,5 +110,6 @@ export class Home implements OnInit {
   checkScreen() {
     this.isMobile = window.innerWidth < 768;
     this.sidebarOpen = !this.isMobile ? true : false;
+    console.log(`isMobile: ${this.isMobile}, sidebarOpen: ${this.sidebarOpen}`);
   }
 }

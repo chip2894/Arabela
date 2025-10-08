@@ -1,0 +1,30 @@
+<div class="flex justify-center gap-2">
+    <p-button (click)="confirm1($event)" label="Guardar" [outlined]="true" />
+    <p-button (click)="confirm2($event)" label="Eliminar" severity="danger" [outlined]="true" />
+</div>
+<br />
+<div class="flex justify-center gap-2">
+    <div class="flex justify-between items-center gap-2 mb-4">
+        <p-button (click)="confirmPosition('left')" icon="pi pi-arrow-left" label="Izquierda" severity="secondary"
+            styleClass="min-w-40" />
+        <p-button (click)="confirmPosition('right')" icon="pi pi-arrow-right" label="Derecha" severity="secondary"
+            styleClass="min-w-40" />
+    </div>
+    <div class="flex justify-between items-center gap-2 mb-4">
+        <p-button (click)="confirmPosition('topleft')" icon="pi pi-arrow-up" label="Arriba a la izquierda"
+            severity="secondary" styleClass="min-w-40" />
+        <p-button (click)="confirmPosition('top')" icon="pi pi-arrow-up" label="Arriba" severity="secondary"
+            styleClass="min-w-40" />
+        <p-button (click)="confirmPosition('topright')" icon="pi pi-arrow-up" label="Arriba a la derecha"
+            severity="secondary" styleClass="min-w-40" />
+    </div>
+    <div class="flex justify-between items-center gap-2 mb-4">
+        <p-button (click)="confirmPosition('bottomleft')" icon="pi pi-arrow-down" label="Abajo a la izquierda"
+            severity="secondary" styleClass="min-w-40" />
+        <p-button (click)="confirmPosition('bottom')" icon="pi pi-arrow-down" label="Abajo" severity="secondary"
+            styleClass="min-w-40" />
+        <p-button (click)="confirmPosition('bottomright')" icon="pi pi-arrow-down" label="Abajo a la derecha"
+            severity="secondary" styleClass="min-w-40" />
+    </div>
+</div>
+<p-confirmdialog key="positionDialog" [position]="position" />
