@@ -17,8 +17,7 @@ interface Articulo {
 @Component({
   selector: 'app-tabla-filas-estaticas',
   standalone: false,
-  templateUrl: './tabla-filas-estaticas.html',
-  styleUrl: './tabla-filas-estaticas.scss'
+  templateUrl: './tabla-filas-estaticas.html'
 })
 export class TablaFilasEstaticas {
   // #region Variables Globales

@@ -21,8 +21,7 @@ interface Articulo {
 @Component({
   selector: 'app-tabla-paginacion',
   standalone: false,
-  templateUrl: './tabla-paginacion.html',
-  styleUrl: './tabla-paginacion.scss'
+  templateUrl: './tabla-paginacion.html'
 })
 export class TablaPaginacion implements OnInit {
   cols!: Column[];

@@ -6,8 +6,7 @@ import { interval, map } from 'rxjs';
 @Component({
   selector: 'app-home',
   standalone: false,
-  templateUrl: './home.html',
-  styleUrl: './home.scss'
+  templateUrl: './home.html'
 })
 export class Home implements OnInit {
 
@@ -57,7 +56,9 @@ export class Home implements OnInit {
     {
       label: 'Páginas', icon: 'pi pi-fw pi-page',
       items: [
-        { label: 'Login', icon: 'pi pi-fw pi-user', routerLink: ['Login'] }
+        { label: 'Login', icon: 'pi pi-fw pi-page', routerLink: ['Login'] },
+        { label: '404', icon: 'pi pi-fw pi-page', routerLink: ['404'] },
+        { label: '401', icon: 'pi pi-fw pi-page', routerLink: ['401'] },
       ]
     }
   ];
@@ -83,14 +84,6 @@ export class Home implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.items.forEach(item => {
-          item.styleClass = this.router.url.includes(item.routerLink as string) ? 'active-link' : '';
-        });
-      }
-    });
-
     this.checkScreen();
   }
 

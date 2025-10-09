@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Table } from 'primeng/table';
 
 interface Column {
@@ -15,8 +15,7 @@ interface Articulo {
 @Component({
   selector: 'app-tabla',
   standalone: false,
-  templateUrl: './tabla.html',
-  styleUrl: './tabla.scss'
+  templateUrl: './tabla.html'
 })
 export class Tabla implements OnInit {
 

@@ -5,8 +5,7 @@ import { NodeService } from '../../../service/nodeservice';
 @Component({
   selector: 'app-tree',
   standalone: false,
-  templateUrl: './tree.html',
-  styleUrl: './tree.scss'
+  templateUrl: './tree.html'
 })
 export class Tree implements OnInit {
 

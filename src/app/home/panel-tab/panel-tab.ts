@@ -3,8 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-panel-tab',
   standalone: false,
-  templateUrl: './panel-tab.html',
-  styleUrl: './panel-tab.scss'
+  templateUrl: './panel-tab.html'
 })
 export class PanelTab implements OnInit {
   tabs: { title: string; value: number; content: string }[] = [];

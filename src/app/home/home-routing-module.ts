@@ -21,6 +21,8 @@ import { OverlayPopover } from './overlay-popover/overlay-popover';
 import { OverlayTooltip } from './overlay-tooltip/overlay-tooltip';
 import { UploadFile } from './upload-file/upload-file';
 import { Login } from './login/login';
+import { NotFound } from './not-found/not-found';
+import { Unauthorized } from './unauthorized/unauthorized';
 //#endregion
 
 
@@ -49,6 +51,8 @@ const routes: Routes = [
       { path: 'OverlayTooltip', component: OverlayTooltip },
       { path: 'Upload', component: UploadFile },
       { path: 'Login', component: Login },
+      { path: '404', component: NotFound },
+      { path: '401', component: Unauthorized },
     ]
   }
 ];

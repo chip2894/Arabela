@@ -15,8 +15,7 @@ interface Articulo {
 @Component({
   selector: 'app-tabla-filtros',
   standalone: false,
-  templateUrl: './tabla-filtros.html',
-  styleUrl: './tabla-filtros.scss'
+  templateUrl: './tabla-filtros.html'
 })
 export class TablaFiltros {
   // #region Variables Globales

@@ -126,6 +126,8 @@ import { OverlayPopover } from './overlay-popover/overlay-popover';
 import { OverlayTooltip } from './overlay-tooltip/overlay-tooltip';
 import { UploadFile } from './upload-file/upload-file';
 import { Login } from './login/login';
+import { NotFound } from './not-found/not-found';
+import { Unauthorized } from './unauthorized/unauthorized';
 
 @NgModule({
   declarations: [
@@ -148,7 +150,9 @@ import { Login } from './login/login';
     OverlayPopover,
     OverlayTooltip,
     UploadFile,
-    Login
+    Login,
+    NotFound,
+    Unauthorized
   ],
   imports: [
     CommonModule,

@@ -17,8 +17,7 @@ interface Articulo {
 @Component({
   selector: 'app-tabla-expansion',
   standalone: false,
-  templateUrl: './tabla-expansion.html',
-  styleUrl: './tabla-expansion.scss'
+  templateUrl: './tabla-expansion.html'
 })
 export class TablaExpansion {
   // #region Variables Globales
