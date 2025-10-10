@@ -1,0 +1,21 @@
+<p-fluid class="flex flex-wrap justify-center gap-6">
+  <div class="flex-auto flex flex-col items-center">
+    <label class="mb-2 block font-bold" for="basico">
+      Básico
+    </label>
+    <input type="text" pInputText [(ngModel)]="valueBasic" inputId="basico"/>
+  </div>
+  <div class="flex-auto flex flex-col items-center">
+    <label class="mb-2 block font-bold" for="desactivado">
+      Desactivado
+    </label>
+    <input type="text" pInputText [(ngModel)]="valueBasic" inputId="desactivado" [disabled]="true"/>
+  </div>
+  <div class="flex-auto flex flex-col items-center">
+    <div class="flex flex-col gap-2">
+        <label for="username">Usuario</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+        <small id="username-help">Introduzca su nombre de usuario para restablecer su contraseña.</small>
+    </div>
+  </div>
+</p-fluid>

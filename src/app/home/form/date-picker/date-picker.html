@@ -1,0 +1,34 @@
+<div class="flex justify-center">
+  <div class="w-full max-w-xs">
+      <label for="basic" class="font-bold block mb-2">Básico</label>
+      <p-datepicker [(ngModel)]="date" inputId="basic" [showClear]="true" />
+  </div>
+</div>
+<br /> <br />
+<p-fluid class="flex flex-wrap gap-4">
+    <div class="flex-auto">
+        <label for="buttondisplay" class="font-bold block mb-2"> Botón </label>
+        <p-datepicker [(ngModel)]="date1" [showIcon]="true" inputId="buttondisplay" [showOnFocus]="false" [readonlyInput]="true" />
+    </div>
+
+    <div class="flex-auto">
+        <label for="icondisplay" class="font-bold block mb-2"> Ícono por defecto </label>
+        <p-datepicker [(ngModel)]="date2" [iconDisplay]="'input'" [showIcon]="true" inputId="icondisplay" [readonlyInput]="true" />
+    </div>
+
+    <div class="flex-auto">
+        <label for="templatedisplay" class="font-bold block mb-2"> Ícono personalizado </label>
+        <p-datepicker [(ngModel)]="date3" [iconDisplay]="'input'" [showIcon]="true" [timeOnly]="true" inputId="templatedisplay" [readonlyInput]="true">
+            <ng-template #inputicon let-clickCallBack="clickCallBack">
+                <i class="pi pi-clock" (click)="clickCallBack($event)"></i>
+            </ng-template>
+        </p-datepicker>
+    </div>
+</p-fluid>
+<br /> <br />
+<div class="flex justify-center">
+  <div class="w-full max-w-xs">
+      <label for="range" class="font-bold block mb-2">Rango de fechas</label>
+      <p-datepicker [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" />
+  </div>
+</div>

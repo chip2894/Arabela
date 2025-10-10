@@ -1,0 +1,22 @@
+<p-fluid class="flex flex-wrap justify-center gap-6">
+  <div class="flex-auto flex flex-col items-center">
+    <label class="mb-2 block font-bold" for="basico">
+      Básico
+    </label>
+    <p-inputotp [(ngModel)]="valueBasic" inputId="basico" />
+  </div>
+
+  <div class="flex-auto flex flex-col items-center">
+    <label class="mb-2 block font-bold" for="mask">
+      Tipo Password (mask)
+    </label>
+    <p-inputotp [(ngModel)]="valueMask" inputId="mask" [mask]="true" />
+  </div>
+
+  <div class="flex-auto flex flex-col items-center">
+    <label class="mb-2 block font-bold" for="integer">
+      Solo Números (integerOnly)
+    </label>
+    <p-inputotp [(ngModel)]="valueInteger" inputId="integer" [integerOnly]="true" />
+  </div>
+</p-fluid>

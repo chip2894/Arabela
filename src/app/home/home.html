@@ -5,7 +5,7 @@
         class="bg-blue-400 border-b px-4 py-2 flex flex-wrap items-center justify-between text-neutral-100 flex-shrink-0 z-20">
         <!-- IZQUIERDA -->
         <div class="flex items-center gap-3 flex-shrink-0">
-            <button (click)="toggleSidebar()" class="flex md:hidden">
+            <button (click)="toggleSidebar()" class="flex md:hidden" aria-label="Abrir menú">
                 <i class="pi pi-bars text-xl"></i>
             </button>
             <div class="flex items-center gap-2 cursor-pointer" (click)="goHome()">
@@ -20,8 +20,7 @@
             class="flex items-center gap-2 text-xs sm:text-sm mt-2 md:mt-0 flex-wrap justify-end text-center md:text-right w-full md:w-auto">
             <span class="whitespace-nowrap">Nombre: José Luis Castro Serrato</span>
             <span class="hidden sm:inline">|</span>
-            <p-button label="Cerrar Sesión" icon="pi pi-sign-out" size="small" styleClass="w-full sm:w-auto"
-                class="mt-1 sm:mt-0"></p-button>
+            <p-button label="Cerrar Sesión" icon="pi pi-sign-out" size="small" styleClass="w-full sm:w-auto" class="mt-1 sm:mt-0" />
         </div>
     </header>
 
@@ -40,7 +39,7 @@
             @if (isMobile && sidebarOpen) {
             <div class="md:hidden bg-gray-200 border-b px-4 py-2 flex justify-between items-center">
                 <span class="font-semibold">Menú</span>
-                <button (click)="toggleSidebar()">
+                <button (click)="toggleSidebar()" aria-label="Cerrar menú">
                     <i class="pi pi-times"></i>
                 </button>
             </div>
@@ -68,7 +67,10 @@
       }" (click)="toggleSidebar()"></div>
 
         <!-- ÁREA DE TRABAJO SCROLLABLE -->
-        <main class="flex-1 overflow-y-auto bg-white p-4 transition-all duration-300">
+        <main class="flex-1 min-h-0 min-w-0 overflow-y-auto overflow-x-hidden bg-white p-4 transition-all duration-300 max-w-full">
+          <div class="flex justify-start m-0 p-0">
+              <p-breadcrumb [model]="breadcrumbItems" [home]="home" />
+          </div>
             <router-outlet></router-outlet>
             <p-confirmDialog position="top" />
             <p-toast position="bottom-right" [breakpoints]="{ '920px': { width: '100%', right: '0', left: '0' } }" />

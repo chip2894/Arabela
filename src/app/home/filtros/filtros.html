@@ -1,0 +1,33 @@
+<p-fluid class="card flex flex-wrap gap-4">
+  <div class="flex-auto">
+      <label class="block font-bold mb-2" for="integeronly">País</label>
+      <p-select [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" placeholder="Selecciona un País" class="w-full">
+          <ng-template #selectedItem let-selectedOption>
+              <div class="flex items-center gap-2">
+                  <div>{{ selectedOption.name }}</div>
+              </div>
+          </ng-template>
+        <ng-template let-country #item>
+            <div class="flex items-center gap-2">
+                <div>{{ country.name }}</div>
+            </div>
+        </ng-template>
+      </p-select>
+  </div>
+  <div class="flex-auto">
+      <label class="block font-bold mb-2" for="integeronly">Año</label>
+      <p-datepicker [(ngModel)]="date" view="year" dateFormat="yy" [iconDisplay]="'input'" [showIcon]="true" [minDate]="minDate" [maxDate]="maxDate">
+        <ng-template #inputicon let-clickCallBack="clickCallBack">
+        <i class="pi pi-angle-down" (click)="clickCallBack($event)"></i>
+    </ng-template>
+      </p-datepicker>
+  </div>
+  <div class="flex-auto">
+      <label class="block font-bold mb-2" for="integeronly">Campaña</label>
+      <p-select [options]="campania" [(ngModel)]="selectedCampania" optionLabel="name" placeholder="Selecciona una Campaña" class="w-full" />
+  </div>
+  <div class="flex-auto">
+      <label class="block font-bold mb-2" for="integeronly">Folleto</label>
+      <p-select [options]="folleto" [(ngModel)]="selectedFolleto" optionLabel="name" placeholder="Selecciona un Folleto" class="w-full" />
+  </div>
+</p-fluid>

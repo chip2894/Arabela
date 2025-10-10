@@ -128,6 +128,26 @@ import { UploadFile } from './upload-file/upload-file';
 import { Login } from './login/login';
 import { NotFound } from './not-found/not-found';
 import { Unauthorized } from './unauthorized/unauthorized';
+import { AutoComplete } from './form/auto-complete/auto-complete';
+import { CascadaSelect } from './form/cascada-select/cascada-select';
+import { Checkbox } from './form/checkbox/checkbox';
+import { DatePicker } from './form/date-picker/date-picker';
+import { Fluid } from "primeng/fluid";
+import { InputMask } from './form/input-mask/input-mask';
+import { InputNumber } from './form/input-number/input-number';
+import { InputOtp } from './form/input-otp/input-otp';
+import { InputText } from './form/input-text/input-text';
+import { KeyFilter } from './form/key-filter/key-filter';
+import { ListBox } from './form/list-box/list-box';
+import { MultiSelect } from './form/multi-select/multi-select';
+import { InputPassword } from './form/input-password/input-password';
+import { RadioButton } from './form/radio-button/radio-button';
+import { InputSelect } from './form/input-select/input-select';
+import { InputTextarea } from './form/input-textarea/input-textarea';
+import { BotonAlternar } from './form/boton-alternar/boton-alternar';
+import { Switch } from './form/switch/switch';
+import { Botones } from './form/botones/botones';
+import { Filtros } from './filtros/filtros';
 
 @NgModule({
   declarations: [
@@ -152,7 +172,26 @@ import { Unauthorized } from './unauthorized/unauthorized';
     UploadFile,
     Login,
     NotFound,
-    Unauthorized
+    Unauthorized,
+    AutoComplete,
+    CascadaSelect,
+    Checkbox,
+    DatePicker,
+    InputMask,
+    InputNumber,
+    InputOtp,
+    InputText,
+    KeyFilter,
+    ListBox,
+    MultiSelect,
+    InputPassword,
+    RadioButton,
+    InputSelect,
+    InputTextarea,
+    BotonAlternar,
+    Switch,
+    Botones,
+    Filtros
   ],
   imports: [
     CommonModule,
@@ -256,8 +295,9 @@ import { Unauthorized } from './unauthorized/unauthorized';
     FloatLabelModule,
     AutoFocusModule,
     KeyFilterModule,
-    CdkDragPlaceholder
-  ],
+    CdkDragPlaceholder,
+    Fluid
+],
   providers: [
     ConfirmationService,
     MessageService,

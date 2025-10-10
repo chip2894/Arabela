@@ -1,0 +1,19 @@
+<div class="flex justify-center">
+    <p-checkbox [(ngModel)]="checked" [binary]="true" variant="filled" />
+</div>
+<br />
+<div class="flex justify-center">
+    <div class="flex gap-4">
+      @for (category of categories; track $index) {
+        <div class="flex items-center">
+            <p-checkbox [inputId]="category.key" name="group" [value]="category" [(ngModel)]="selectedCategories" />
+            <label [for]="category.key" class="ml-2"> {{ category.name }} </label>
+        </div>
+      }
+    </div>
+</div>
+<br />
+<div class="flex justify-center gap-2">
+    <p-checkbox [(ngModel)]="checked1" [binary]="true" [disabled]="true" />
+    <p-checkbox [(ngModel)]="checked2" [binary]="true" [disabled]="true" />
+</div>

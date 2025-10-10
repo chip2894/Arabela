@@ -1,13 +1,14 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit,} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { interval, map } from 'rxjs';
+import { interval, map, filter } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.html'
 })
+
 export class Home implements OnInit {
 
   version = '1.0.0';
@@ -15,12 +16,37 @@ export class Home implements OnInit {
   perfil = 'Administrador';
   sidebarOpen = true;
   isMobile = false;
+  breadcrumbItems: MenuItem[] = []
+  home: MenuItem | undefined
   items: MenuItem[] = [
     {
       label: 'Árbol', icon: 'pi pi-fw pi-sitemap', routerLink: ['Arbol']
     },
     {
-      label: 'Subir Archivo', icon: 'pi pi-fw pi-upload', routerLink: ['Upload']
+      label: 'Componentes', icon: 'pi pi-fw pi-id-card',
+      items: [
+        { label: 'Autocompletar', icon: 'pi pi-fw pi-id-card', routerLink: ['Autocompletar'] },
+        { label: 'Selección en cascada', icon: 'pi pi-fw pi-id-card', routerLink: ['CascadaSelect'] },
+        { label: 'Checkbox', icon: 'pi pi-fw pi-id-card', routerLink: ['Checkbox'] },
+        { label: 'DatePicker', icon: 'pi pi-fw pi-id-card', routerLink: ['DatePicker'] },
+        { label: 'inputMask', icon: 'pi pi-fw pi-id-card', routerLink: ['inputMask'] },
+        { label: 'InputNumber', icon: 'pi pi-fw pi-id-card', routerLink: ['inputNumber'] },
+        { label: 'InputOtp', icon: 'pi pi-fw pi-id-card', routerLink: ['inputOtp'] },
+        { label: 'InputText', icon: 'pi pi-fw pi-id-card', routerLink: ['inputText'] },
+        { label: 'KeyFilter', icon: 'pi pi-fw pi-id-card', routerLink: ['keyFilter'] },
+        { label: 'ListBox', icon: 'pi pi-fw pi-id-card', routerLink: ['listBox'] },
+        { label: 'MultiSelect', icon: 'pi pi-fw pi-id-card', routerLink: ['multiSelect'] },
+        { label: 'Password', icon: 'pi pi-fw pi-id-card', routerLink: ['inputPassword'] },
+        { label: 'RadioButton', icon: 'pi pi-fw pi-id-card', routerLink: ['radioButton'] },
+        { label: 'Select', icon: 'pi pi-fw pi-id-card', routerLink: ['inputSelect'] },
+        { label: 'TextArea', icon: 'pi pi-fw pi-id-card', routerLink: ['inputTextArea'] },
+        { label: 'ToggleButton', icon: 'pi pi-fw pi-id-card', routerLink: ['botonAlternar'] },
+        { label: 'ToggleSwitch', icon: 'pi pi-fw pi-id-card', routerLink: ['botonSwitch'] },
+        { label: 'Botones', icon: 'pi pi-fw pi-id-card', routerLink: ['botones'] },
+      ]
+    },
+    {
+      label: 'Filtros', icon: 'pi pi-fw pi-filter', routerLink: ['Filtros']
     },
     {
       label: 'Overlays', icon: 'pi pi-fw pi-box',
@@ -34,6 +60,14 @@ export class Home implements OnInit {
       ]
     },
     {
+      label: 'Páginas', icon: 'pi pi-fw pi-file',
+      items: [
+        { label: 'Login', icon: 'pi pi-fw pi-file', routerLink: ['Login'] },
+        { label: '404', icon: 'pi pi-fw pi-file', routerLink: ['404'] },
+        { label: '401', icon: 'pi pi-fw pi-file', routerLink: ['401'] },
+      ]
+    },
+    {
       label: 'Paneles', icon: 'pi pi-fw pi-objects-column',
       items: [
         { label: 'Acordeón', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelAcordeon'] },
@@ -42,6 +76,9 @@ export class Home implements OnInit {
         { label: 'Panel', icon: 'pi pi-fw pi-th-large', routerLink: ['Panel'] },
         { label: 'Tabs', icon: 'pi pi-fw pi-th-large', routerLink: ['PanelTab'] },
       ]
+    },
+    {
+      label: 'Subir Archivo', icon: 'pi pi-fw pi-upload', routerLink: ['Upload']
     },
     {
       label: 'Tablas', icon: 'pi pi-fw pi-table',
@@ -53,14 +90,6 @@ export class Home implements OnInit {
         { label: 'Paginación', icon: 'pi pi-fw pi-table', routerLink: ['TablaPaginacion'] },
       ]
     },
-    {
-      label: 'Páginas', icon: 'pi pi-fw pi-page',
-      items: [
-        { label: 'Login', icon: 'pi pi-fw pi-page', routerLink: ['Login'] },
-        { label: '404', icon: 'pi pi-fw pi-page', routerLink: ['404'] },
-        { label: '401', icon: 'pi pi-fw pi-page', routerLink: ['401'] },
-      ]
-    }
   ];
 
   private dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
@@ -81,28 +110,93 @@ export class Home implements OnInit {
     })
   );
 
-  constructor(private router: Router) { }
+    constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.sortMenuItems(this.items);
+    this.home = { icon: 'pi pi-home', routerLink: '/' };
     this.checkScreen();
+
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.updateBreadcrumb();
+      this.setActiveMenuItem();
+    });
+
+    this.updateBreadcrumb();
+    this.setActiveMenuItem();
   }
 
-  toggleSidebar() {
-    this.sidebarOpen = !this.sidebarOpen;
+  updateBreadcrumb() {
+    const currentUrl = this.router.url.replace(/^\/+|\/+$/g, '').toLowerCase();
+    const path = this.findMenuPath(this.items, currentUrl);
+
+    this.breadcrumbItems = path.length ? path.map(p => ({
+      label: p.label,
+      icon: p.icon,
+      routerLink: p.routerLink
+    })) : [];
   }
 
-  refreshMenu() {
-    this.items = [...this.items];
+  findMenuPath(items: MenuItem[], route: string, trail: MenuItem[] = []): MenuItem[] {
+    for (const item of items) {
+      const newTrail = [...trail, item];
+      const link = Array.isArray(item.routerLink)
+        ? item.routerLink.join('/').toLowerCase()
+        : (item.routerLink || '').toString().toLowerCase();
+
+      const normalizedRoute = route.replace(/^home\//, '');
+      const normalizedLink = link.replace(/^home\//, '');
+
+      if (normalizedRoute === normalizedLink) return newTrail;
+
+      if (item.items && item.items.length > 0) {
+        const found = this.findMenuPath(item.items, route, newTrail);
+        if (found.length > 0) return found;
+      }
+    }
+    return [];
   }
 
-  goHome() {
-    this.router.navigate(['/']);
+  sortMenuItems(items: any[]): any[] {
+    return items
+      .map(item => {
+        if (item.items && item.items.length > 0) {
+          item.items = this.sortMenuItems(item.items);
+        }
+        return item;
+      })
+      .sort((a, b) => a.label.localeCompare(b.label));
   }
+
+  setActiveMenuItem() {
+    const currentUrl = this.router.url.replace(/^\/+|\/+$/g, '').toLowerCase();
+    const path = this.findMenuPath(this.items, currentUrl);
+
+    this.items.forEach(item => this.markActive(item, path));
+  }
+
+  markActive(item: MenuItem, path: MenuItem[]) {
+    item.styleClass = path.includes(item)
+      ? 'bg-blue-200 text-neutral-100 font-semibold text-base' // activo
+      : 'hover:bg-blue-200'; // inactivo
+    if (item.items) item.items.forEach(child => this.markActive(child, path));
+  }
+
+  isActive(item: MenuItem): boolean {
+  const currentUrl = this.router.url.replace(/^\/+|\/+$/g, '').toLowerCase();
+  const path = this.findMenuPath(this.items, currentUrl);
+  return path.includes(item);
+}
+
+  toggleSidebar() { this.sidebarOpen = !this.sidebarOpen; }
+  refreshMenu() { this.items = [...this.items]; }
+  goHome() { this.router.navigate(['/']); }
 
   @HostListener('window:resize')
   checkScreen() {
     this.isMobile = window.innerWidth < 768;
     this.sidebarOpen = !this.isMobile ? true : false;
-    console.log(`isMobile: ${this.isMobile}, sidebarOpen: ${this.sidebarOpen}`);
   }
 }

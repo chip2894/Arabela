@@ -1,0 +1,7 @@
+<div class="flex justify-center">
+    <p-autocomplete [(ngModel)]="value" [suggestions]="items" (completeMethod)="search($event)" />
+</div>
+<br />
+<div class="flex justify-center">
+    <p-autocomplete [(ngModel)]="value1" [dropdown]="true" [suggestions]="items" (completeMethod)="search1($event)" [fluid]="true"/>
+</div>
