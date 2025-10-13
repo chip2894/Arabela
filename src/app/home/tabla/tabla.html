@@ -1,28 +1,39 @@
 <div class="overflow-auto">
-    <p-table [columns]="cols" [value]="articulos">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>
-                    ID
-                </th>
-                @for (col of cols; track col) {
-                <th>
-                    {{ col.field }}
-                </th>
-                }
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-articulo let-i="rowIndex">
-            <tr>
-                <td>
-                    {{ i + 1 }}
-                </td>
-                @for (col of cols; track $index) {
-                <td>
-                    {{ articulo[col.field] }}
-                </td>
-                }
-            </tr>
-        </ng-template>
-    </p-table>
+    <p-table
+    *ngIf="users$ | async as users; else loading"
+    [value]="users"
+  >
+    <ng-template pTemplate="caption">
+      <div class="text-lg font-semibold text-gray-700">Usuarios</div>
+    </ng-template>
+
+    <ng-template pTemplate="header">
+      <tr class="bg-gray-100">
+        <th class="p-3 text-center">Icono</th>
+        <th class="p-3 text-left">ID</th>
+        <th class="p-3 text-left">Nombre</th>
+        <th class="p-3 text-left">Usuario</th>
+        <th class="p-3 text-left">Correo</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-user>
+      <tr class="hover:bg-gray-50 transition">
+        <td class="p-3 text-center">
+          <i [class]="user.icon"></i>
+        </td>
+        <td class="p-3">{{ user.id }}</td>
+        <td class="p-3">{{ user.name }}</td>
+        <td class="p-3">{{ user.username }}</td>
+        <td class="p-3">{{ user.email }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <ng-template #loading>
+    <div class="flex items-center justify-center py-10 text-gray-500">
+      <i class="pi pi-spin pi-spinner mr-2"></i>
+      Cargando usuarios desde la API...
+    </div>
+  </ng-template>
 </div>
