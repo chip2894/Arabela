@@ -1,0 +1,27 @@
+<p-panel header="Básico (Inactivo)">
+    <div class="flex justify-center">
+        <p-toggleswitch [(ngModel)]="checked" />
+    </div>
+</p-panel>
+<br />
+<p-panel header="Básico (Activo)">
+    <div class="flex justify-center">
+        <p-toggleswitch [(ngModel)]="checked1" />
+    </div>
+</p-panel>
+<br />
+<p-panel header="Con Icono">
+    <div class="flex justify-center gap-4">
+        <p-toggleswitch [(ngModel)]="checked2">
+            <ng-template #handle let-checked="checked">
+                <i [ngClass]="['!text-xs', 'pi', checked2 ? 'pi-check' : 'pi-times']"></i>
+            </ng-template>
+        </p-toggleswitch>
+    </div>
+</p-panel>
+<br />
+<p-panel header="Desactivado">
+    <div class="flex justify-center">
+        <p-toggleswitch [(ngModel)]="checked1" [disabled]="true" />
+    </div>
+</p-panel>

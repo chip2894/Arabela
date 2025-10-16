@@ -1,0 +1,30 @@
+<div class="relative w-full h-screen flex flex-col lg:flex-row bg-surface-0 dark:bg-surface-900">
+
+    <!-- Texto 404 -->
+    <div class="flex flex-1 justify-center lg:justify-start items-center h-full">
+        <div class="w-full max-w-2xl px-6 py-12 lg:p-12 xl:p-16 text-center lg:text-left">
+            <h1 class="text-6xl xl:text-7xl font-bold text-surface-900 dark:text-surface-0 mb-6 leading-tight">
+                <span class="block">404</span>
+                <span class="block text-primary">Página no encontrada</span>
+            </h1>
+
+            <p
+                class="text-surface-700 dark:text-surface-200 text-lg lg:text-xl mb-8 max-w-xl lg:max-w-none leading-relaxed">
+                ¡Uy! La página que buscas no existe o ha sido movida.
+                Revisa la URL o regresa a la página principal.
+            </p>
+
+            <div class="flex items-center gap-4 justify-center lg:justify-start">
+                <button pButton type="button" class="bg-primary text-surface-0 hover:bg-primary-dark" (click)="goHome()" aria-label="Inicio">Inicio</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección opcional de imagen o galería -->
+    <div class="flex-1 hidden lg:flex justify-center items-center w-full h-full overflow-hidden">
+        <img src="https://www.bluehost.com/blog/wp-content/uploads/2024/03/WordPress-error-establishing-a-database-connection.png"
+            alt="Unauthorized"
+            class="h-full w-full object-cover xl:[clip-path:polygon(12%_0,100%_0%,100%_100%,0_100%)]" />
+    </div>
+
+</div>

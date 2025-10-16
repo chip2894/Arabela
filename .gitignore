@@ -1,4 +1,6 @@
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# ============================================
+# 🅰️  Angular / TypeScript / Node.js
+# ============================================
 
 # Compiled output
 /dist
@@ -7,11 +9,18 @@
 /bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
 
-# IDEs and editors
+# ============================================
+# 💻  IDEs y editores
+# ============================================
+
+# JetBrains / WebStorm
 .idea/
 .project
 .classpath
@@ -26,19 +35,59 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
 
-# Miscellaneous
-/.angular/cache
+.history/
+
+# ============================================
+# 🧩  Angular / Build tools
+# ============================================
+
+/.angular/cache/
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+.connect.lock
+/coverage/
 testem.log
-/typings
+/typings/
 __screenshots__/
+*.tsbuildinfo
 
-# System files
+# ============================================
+# ⚙️  Environment y configuración local
+# ============================================
+
+.env
+.env.local
+.env.*.local
+
+# ============================================
+# 🧪  Lint, Testing y Tools
+# ============================================
+
+.cache/
+.eslintcache/
+.nyc_output/
+.cypress/
+
+# ============================================
+# 💾  Sistema operativo
+# ============================================
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
 Thumbs.db
-node_modules
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# ============================================
+# 🧱  Archivos temporales / backups
+# ============================================
+
+*.tmp
+*.bak

@@ -1,0 +1,5 @@
+<p-panel header="Básico">
+    <div class="flex justify-center items-center">
+        <p-cascadeselect [style]="{ minWidth: '14rem' }" [(ngModel)]="selectedCity" [options]="countries" optionLabel="cname" optionGroupLabel="name" [optionGroupChildren]="['states', 'cities']" placeholder="Selecciona una Ciudad" [showClear]="true" appendTo="self" />
+    </div>
+</p-panel>

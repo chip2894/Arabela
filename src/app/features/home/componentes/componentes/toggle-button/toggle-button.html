@@ -1,0 +1,11 @@
+<p-panel header="Básico">
+    <div class="flex justify-center">
+        <p-togglebutton [(ngModel)]="checked" onLabel="On" offLabel="Off" class="w-24" />
+    </div>
+</p-panel>
+<br />
+<p-panel header="Con Icono">
+    <div class="flex justify-center">
+        <p-togglebutton [(ngModel)]="checked1" onLabel="Locked" offLabel="Unlocked" onIcon="pi pi-check" offIcon="pi pi-times" onIcon="pi pi-lock" offIcon="pi pi-lock-open" class="w-36" ariaLabel="Do you confirm" />
+    </div>
+</p-panel>

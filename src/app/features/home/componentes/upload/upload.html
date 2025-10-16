@@ -1,0 +1,14 @@
+<p-fileUpload #fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+    (onUpload)="onUpload($event)" (onSelect)="onSelect($event)" [multiple]="true" [maxFileSize]="maxFileSize"
+    accept=".sql,.txt,.csv,.zip,.pdf,image/*" mode="advanced"
+    invalidFileSizeMessageSummary="El archivo es demasiado grande."
+    invalidFileSizeMessageDetail="El tamaño máximo es {{ maxFileSizeMb }} MB." chooseLabel="Seleccionar"
+    uploadLabel="Cargar" cancelLabel="Cancelar" [showUploadButton]="true" [showCancelButton]="true"
+    [customUpload]="false">
+    <ng-template #empty>
+        <div>
+            Arrastre y suelte archivos aquí para cargarlos.<br>
+            <small>Archivos permitidos: {{ allowedTypesString }}</small>
+        </div>
+    </ng-template>
+</p-fileUpload>

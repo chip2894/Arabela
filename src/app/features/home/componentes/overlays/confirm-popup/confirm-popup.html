@@ -1,0 +1,28 @@
+<p-panel header="Básico">
+    <div class="flex justify-center gap-2">
+        <p-button (click)="confirmPopup1($event)" label="Guardar" [outlined]="true" />
+        <p-button
+            (click)="confirmPopup2($event)"
+            label="Eliminar"
+            severity="danger"
+            [outlined]="true"
+        />
+    </div>
+</p-panel>
+<br />
+<p-panel header="Personalizado">
+    <div class="flex justify-center">
+        <p-confirmpopup key="popup1">
+            <ng-template #content let-message>
+                <div
+                    class="flex flex-col items-center w-full gap-4 border-b border-surface-200 p-4 mb-4 pb-0"
+                >
+                    <i [class]="message.icon" class="!text-6xl text-primary-500"></i>
+                    <p>{{ message.message }}</p>
+                </div>
+            </ng-template>
+        </p-confirmpopup>
+        <p-button (click)="confirm($event)" label="Guardar" />
+    </div>
+</p-panel>
+<p-confirmpopup key="popup" />

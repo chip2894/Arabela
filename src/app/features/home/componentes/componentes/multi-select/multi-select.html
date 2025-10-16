@@ -1,0 +1,11 @@
+<p-panel header="Básico">
+    <div class="flex justify-center">
+        <p-multiselect [options]="cities" [(ngModel)]="selectedCities" optionLabel="name" placeholder="Select Cities" [maxSelectedLabels]="3" class="w-full md:w-80" />
+    </div>
+</p-panel>
+<br />
+<p-panel header="Con Pills">
+    <div class="flex justify-center">
+        <p-multiselect [options]="cities" [(ngModel)]="selectedCities" placeholder="Select Cities" optionLabel="name" display="chip" class="w-full md:w-80" />
+    </div>
+</p-panel>

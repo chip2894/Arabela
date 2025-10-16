@@ -1,0 +1,47 @@
+<p-fieldset legend="Criterios de Busqueda">
+    <p-fluid class="card flex flex-wrap gap-4">
+      <div class="flex-auto">
+          <p-floatLabel>
+              <p-select [options]="countries" [(ngModel)]="selectedCountry" optionLabel="name" [filter]="true" filterBy="name" [showClear]="true" class="w-full">
+                  <ng-template #selectedItem let-selectedOption>
+                      <div class="flex items-center gap-2">
+                          <div>{{ selectedOption.name }}</div>
+                      </div>
+                  </ng-template>
+                  <ng-template let-country #item>
+                      <div class="flex items-center gap-2">
+                          <div>{{ country.name }}</div>
+                      </div>
+                  </ng-template>
+              </p-select>
+              <label class="block font-bold mb-2" for="integeronly">País</label>
+          </p-floatLabel>
+      </div>
+      <div class="flex-auto">
+          <p-floatLabel>
+              <p-datepicker [(ngModel)]="date" view="year" dateFormat="yy" [iconDisplay]="'input'" [showIcon]="true" [minDate]="minDate" [maxDate]="maxDate">
+                  <ng-template #inputicon let-clickCallBack="clickCallBack">
+                      <i class="pi pi-angle-down" (click)="clickCallBack($event)"></i>
+                  </ng-template>
+              </p-datepicker>
+              <label class="block font-bold mb-2" for="integeronly">Año</label>
+          </p-floatLabel>
+      </div>
+      <div class="flex-auto">
+          <p-floatLabel>
+              <p-select [options]="campania" [(ngModel)]="selectedCampania" optionLabel="name" class="w-full" />
+              <label class="block font-bold mb-2" for="integeronly">Campaña</label>
+          </p-floatLabel>
+      </div>
+      <div class="flex-auto">
+          <p-floatLabel>
+              <p-select [options]="folleto" [(ngModel)]="selectedFolleto" optionLabel="name" class="w-full" />
+              <label class="block font-bold mb-2" for="integeronly">Folleto</label>
+          </p-floatLabel>
+      </div>
+    </p-fluid>
+    <div class="flex justify-end mr-6 gap-2">
+      <p-button icon="pi pi-eraser" label="Limpiar" severity="secondary" />
+      <p-button icon="pi pi-search" label="Buscar" />
+    </div>
+</p-fieldset>

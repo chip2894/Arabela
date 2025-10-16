@@ -1,0 +1,116 @@
+<div class="overflow-auto">
+    <p-table
+        #dt
+        [value]="articulos"
+        [rows]="10"
+        [columns]="cols"
+        [paginator]="true"
+        [rowHover]="true"
+        dataKey="id"
+        currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} artículos"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]"
+        [loading]="cargando"
+        [globalFilterFields]="['nombre', 'clave']"
+        [scrollable]="true"
+        rowGroupMode="subheader"
+        groupRowsBy="clave"
+        size="small"
+    >
+        <ng-template #caption>
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+                <h5 class="m-0">Gestión de Artículos</h5>
+                <div class="relative w-full sm:w-auto">
+                    <p-iconfield>
+                        <p-inputicon class="pi pi-search" />
+                        <input
+                            pInputText
+                            type="text"
+                            pSize="small"
+                            [(ngModel)]="articulo"
+                            (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Buscar..."
+                        />
+                    </p-iconfield>
+                </div>
+            </div>
+        </ng-template>
+
+        <ng-template #header>
+            <tr>
+                <th pSortableColumn="clave" class="w-auto min-w-auto">
+                    <div class="flex justify-start items-center gap-2">
+                        Código Artículo
+                        <p-sortIcon field="clave" />
+                    </div>
+                </th>
+                <th pSortableColumn="nombre" class="w-auto min-w-auto">
+                    <div class="flex justify-start items-center gap-2">
+                        Nombre Artículo
+                        <p-sortIcon field="nombre" />
+                    </div>
+                </th>
+                <th pSortableColumn="categoria" class="w-auto min-w-auto">
+                    <div class="flex justify-start items-center gap-2">
+                        Categoría
+                        <p-sortIcon field="categoria" />
+                    </div>
+                </th>
+                <th pSortableColumn="costoPromedio" class="w-auto min-w-auto">
+                    <div class="flex justify-start items-center gap-2">
+                        Costo Promedio
+                        <p-sortIcon field="costoPromedio" />
+                    </div>
+                </th>
+                <th pSortableColumn="estatus" class="w-auto min-w-auto">
+                    <div class="flex justify-start items-center gap-2">
+                        Estatus
+                        <p-sortIcon field="estatus" />
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+
+        <ng-template #groupheader let-articulo let-rowIndex="rowIndex" let-expanded="expanded">
+            <tr>
+                <td colspan="5" class="text-left">
+                    <button
+                        type="button"
+                        pButton
+                        pRipple
+                        [pRowToggler]="articulo"
+                        text
+                        rounded
+                        plain
+                        class="mr-2"
+                        icon="pi"
+                        [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"
+                    ></button>
+                    <span class="font-bold ml-2">{{ articulo.clave }}</span>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #expandedrow let-articulo>
+            <tr>
+                <td></td>
+                <td class="text-left">{{ articulo.nombre }}</td>
+                <td class="text-left">{{ articulo.categoria }}</td>
+                <td class="text-left">{{ articulo.costoPromedio }}</td>
+                <td class="text-left">
+                    <i
+                        class="pi"
+                        [ngClass]="{
+                            'text-green-500 pi-check-circle': articulo.estatus,
+                            'text-red-500 pi-times-circle': !articulo.estatus,
+                        }"
+                    ></i>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template #emptymessage>
+            <tr>
+                <td colspan="4">No se encontraron artículos</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

@@ -1,0 +1,39 @@
+<div class="relative w-full h-screen flex flex-col lg:flex-row bg-surface-0 dark:bg-surface-900">
+    <!-- Sección de texto 401 -->
+    <div class="flex flex-1 justify-center items-center h-full">
+        <div class="w-full max-w-2xl px-6 py-12 text-center">
+            <h1
+                class="text-6xl xl:text-7xl font-bold text-surface-900 dark:text-surface-0 mb-6 leading-tight"
+            >
+                <span class="block">401</span>
+                <span class="block text-red-600">No autorizado</span>
+            </h1>
+
+            <p
+                class="text-surface-700 dark:text-surface-200 text-lg lg:text-xl mb-8 leading-relaxed"
+            >
+                No tienes permiso para acceder a esta página. Por favor inicia sesión o vuelve a la
+                página principal.
+            </p>
+
+            <div class="flex items-center gap-4 justify-center">
+                <button
+                    pButton
+                    type="button"
+                    label="Ir al login"
+                    class="bg-primary text-surface-0 hover:bg-primary-dark"
+                    (click)="goHome()"
+                ></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección opcional de imagen o galería -->
+    <div class="flex-1 hidden lg:flex justify-center items-center w-full h-full overflow-hidden">
+        <img
+            src="https://www.bluehost.com/blog/wp-content/uploads/2023/06/what-is-a-401-error.png"
+            alt="Unauthorized"
+            class="h-full w-full object-cover xl:[clip-path:polygon(12%_0,100%_0%,100%_100%,0_100%)]"
+        />
+    </div>
+</div>

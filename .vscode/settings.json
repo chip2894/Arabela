@@ -1,0 +1,48 @@
+{
+    // --- FORMATO DE CÓDIGO ---
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": false,
+
+    // --- INTEGRACIÓN ESLINT + PRETTIER ---
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.eslint": true
+    },
+    "eslint.validate": ["typescript", "html"],
+    "eslint.alwaysShowStatus": true,
+
+    // --- CONFIGURACIÓN TAILWINDCSS ---
+    "tailwindCSS.includeLanguages": {
+        "typescript": "html",
+        "typescriptreact": "html",
+        "html": "html"
+    },
+    "tailwindCSS.emmetCompletions": true,
+
+    // --- EMMET PARA ANGULAR ---
+    "emmet.includeLanguages": {
+        "typescript": "html"
+    },
+
+    // --- APARIENCIA ---
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.minimap.enabled": false,
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    // --- TERMINAL ---
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+
+    // --- GUARDADO AUTOMÁTICO ---
+    "files.autoSave": "onWindowChange",
+
+    // --- ICONOS (si tienes instalada Material Icon Theme) ---
+    "workbench.iconTheme": "material-icon-theme"
+}

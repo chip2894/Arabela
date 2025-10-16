@@ -1,0 +1,11 @@
+<p-panel header="Básico">
+    <div class="flex justify-center">
+        <p-inputmask mask="99-999999" [(ngModel)]="value" placeholder="99-999999" />
+    </div>
+</p-panel>
+<br />
+<p-panel header="SlotChar">
+    <div class=" flex justify-center">
+        <p-inputmask [(ngModel)]="value1" mask="99/99/9999" placeholder="99/99/9999" slotChar="mm/dd/yyyy" />
+    </div>
+</p-panel>
