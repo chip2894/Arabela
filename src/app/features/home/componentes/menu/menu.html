@@ -1,16 +1,33 @@
 <aside class="flex flex-col h-full border-r bg-gray-100">
     @if (isMobile && sidebarOpen) {
-        <div class="md:hidden bg-gray-200 border-b px-4 py-2 flex justify-between items-center gap-2">
+        <div
+            class="md:hidden bg-gray-200 border-b px-4 py-2 flex justify-between items-center gap-2"
+        >
             <span class="font-semibold">Menú</span>
             <button (click)="closeSidebar.emit()" aria-label="Cerrar menú">
                 <i class="pi pi-times"></i>
             </button>
         </div>
     }
-    <div [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }" class="flex-grow overflow-y-auto p-3 transition-opacity duration-300">
-      <p-panelMenu [model]="items"></p-panelMenu>
+    <div
+        [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }"
+        class="flex-grow overflow-y-auto p-3 transition-opacity duration-300"
+    >
+        <p-panelMenu [model]="items"></p-panelMenu>
     </div>
-    <div [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }" class="border-t flex-shrink-0 p-2 flex justify-end transition-opacity duration-300">
-        <p-button [text]="true" [raised]="true" icon="pi pi-refresh" size="small" severity="secondary" pTooltip="Refrescar menú" tooltipPosition="right" (click)="refreshMenu()" />
+    <div
+        [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }"
+        class="border-t flex-shrink-0 p-2 flex justify-end transition-opacity duration-300"
+    >
+        <p-button
+            [text]="true"
+            [raised]="true"
+            icon="pi pi-refresh"
+            size="small"
+            severity="secondary"
+            pTooltip="Refrescar menú"
+            tooltipPosition="right"
+            (click)="refreshMenu()"
+        />
     </div>
 </aside>

@@ -5,3 +5,41 @@
 ::ng-deep .p-paginator .p-paginator-current {
     text-align: right;
 }
+
+/* Items del menú principal con routerLink (sin submenú) */
+::ng-deep .p-panelmenu-header-link.p-panelmenu-item-link-active {
+    background-color: #6366f1 !important;
+    color: white !important;
+}
+
+::ng-deep .p-panelmenu-header-link.p-panelmenu-item-link-active .p-panelmenu-header-icon,
+::ng-deep .p-panelmenu-header-link.p-panelmenu-item-link-active .p-panelmenu-header-label {
+    color: white !important;
+}
+
+/* Sub-items del menú - Estado activo */
+::ng-deep .p-panelmenu-item-link.active-submenu-item {
+    background-color: #6366f1 !important;
+    color: white !important;
+}
+
+::ng-deep .p-panelmenu-item-link.active-submenu-item .p-panelmenu-item-icon,
+::ng-deep .p-panelmenu-item-link.active-submenu-item .p-panelmenu-item-label {
+    color: white !important;
+}
+
+/* Hover para items no activos del header */
+::ng-deep .p-panelmenu-header-link:not(.p-panelmenu-item-link-active):hover {
+    background-color: #e5e7eb !important;
+}
+
+/* Hover para sub-items no activos */
+::ng-deep .p-panelmenu-item-link:not(.active-submenu-item):hover {
+    background-color: #e5e7eb !important;
+}
+
+/* Transiciones suaves */
+::ng-deep .p-panelmenu-header-link,
+::ng-deep .p-panelmenu-item-link {
+    transition: all 0.2s ease-in-out;
+}
