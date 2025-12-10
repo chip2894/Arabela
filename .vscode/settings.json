@@ -9,8 +9,8 @@
     // --- INTEGRACIÓN ESLINT + PRETTIER ---
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.codeActionsOnSave": {
-        "source.fixAll": true,
-        "source.fixAll.eslint": true
+        "source.fixAll": "explicit",
+        "source.fixAll.eslint": "explicit"
     },
     "eslint.validate": ["typescript", "html"],
     "eslint.alwaysShowStatus": true,

@@ -11,22 +11,22 @@
     }
     <div
         [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }"
-        class="flex-grow overflow-y-auto p-3 transition-opacity duration-300"
+        class="flex-grow overflow-y-auto p-0 transition-opacity duration-300"
     >
-        <p-panelMenu [model]="items"></p-panelMenu>
+        <p-panelMenu [model]="items" class="w-full"></p-panelMenu>
     </div>
     <div
         [ngClass]="{ 'opacity-100': sidebarOpen, 'opacity-0': !sidebarOpen }"
         class="border-t flex-shrink-0 p-2 flex justify-end transition-opacity duration-300"
     >
         <p-button
-            [text]="true"
-            [raised]="true"
             icon="pi pi-refresh"
             size="small"
-            severity="secondary"
             pTooltip="Refrescar menú"
             tooltipPosition="right"
+            severity="help"
+            [rounded]="true"
+            [text]="true"
             (click)="refreshMenu()"
         />
     </div>
